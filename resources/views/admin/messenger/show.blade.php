@@ -37,13 +37,46 @@
         <!-- Main content -->
             <div class="content-wrapper">
 
-                <div class="navbar navbar-default navbar-component navbar-xs">
-                         <h4>{{ $thread->subject }}</h4>
+
+
+
+                <div class="panel panel-flat timeline-content">
+                    <div class="panel-heading">
+                        <h6 class="panel-title">{{ $thread->subject }}<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                        <div class="heading-elements">
+                            <ul class="icons-list">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-circle-down2"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="{{ url('/app/messages/destroy', $thread->id) }}"><small class="font1 text-danger"><i class="icon-trash-alt"></i> მიმოწერის წაშლა</small></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="media-list chat-list content-group">
+                            <li class="media date-step">
+                                <span>Today</span>
+                            </li>
+
+                            @each('admin.messenger.partials.messages', $thread->messages, 'message')
+
+                        </ul>
+                        @include('admin.messenger.partials.form-message')
+                    </div>
                 </div>
 
-        @each('admin.messenger.partials.messages', $thread->messages, 'message')
 
-        @include('admin.messenger.partials.form-message')
+
+
+
+
+
+
+
 
 
 

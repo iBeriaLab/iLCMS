@@ -12,6 +12,9 @@
 */
 
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     $posts = App\Posts::all();
     return view('front.index')->with('posts', $posts);
@@ -121,6 +124,10 @@ Route::get('/com', function () {
             Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
             Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
             Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
+            Route::delete('/delete/{ad}', array(
+                'uses' => 'MessagesController@destroy',
+                'as' => 'messages.destroy'
+            ));
         });
 
 
@@ -135,6 +142,11 @@ Route::get('/com', function () {
             return view('admin.layouts.help');
         });
 
+
+        //ბილეთები
+
+        Route::get('new_ticket', 'TicketsController@create');
+        Route::post('new_ticket', 'TicketsController@store');
 
 
     });

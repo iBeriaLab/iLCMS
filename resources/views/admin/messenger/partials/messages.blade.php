@@ -1,27 +1,30 @@
-<div class="media">
+
 
     @if($message->user->name != Auth::user()->name)
-    <a class="pull-right" href="{{ url('/app/account', $message->user->id) }}">
-        <img src="{{ url('/images/avatars', $message->user->avatar) }}"
-             alt="{{ $message->user->name }}" class="img-circle" style="width: 50px;">
-    </a>
-        <div class="media-body navbar navbar-default navbar-component navbar-xs p-10">
-            <small>{!! $message->body !!}</small>
-        </div>
-        <div class="text-muted">
-            <small>გამოგზავნილია {{ $message->created_at->diffForHumans() }}</small>
-        </div>
-    @else
-        <a class="pull-left" href="#">
-            <img src="{{ url('/images/avatars', $message->user->avatar) }}"
-                 alt="{{ $message->user->name }}" class="img-circle" style="width: 50px;">
-        </a>
 
-    <div class="media-body navbar navbar-default navbar-component navbar-xs p-10 bg-indigo-400">
-        <small>{!! $message->body !!}</small>
-    </div>
-    <div class="text-muted">
-        <small>გაგზავნილია {{ $message->created_at->diffForHumans() }}</small>
-    </div>
+        <li class="media">
+            <div class="media-left">
+                <a href="{{ url('/app/account', $message->user->id) }}">
+                    <img src="{{ url('/images/avatars', $message->user->avatar) }}" class="img-circle" alt="{{ $message->user->name }}">
+                </a>
+            </div>
+            <div class="media-body">
+                <div class="media-content"><small>{!! $message->body !!}</small></div>
+                <span class="media-annotation display-block mt-10">{{ $message->created_at->diffForHumans() }}<a href="#"><i class="icon-watch2 position-right text-muted"></i></a></span>
+            </div>
+        </li>
+
+    @else
+
+        <li class="media reversed">
+            <div class="media-body">
+                <div class="media-content"><small>{!! $message->body !!}</small></div>
+                <span class="media-annotation display-block mt-10">{{ $message->created_at->diffForHumans() }}<a href="#"><i class="icon-watch2 position-right text-muted"></i></a></span>
+            </div>
+            <div class="media-right">
+                <a href="{{ url('/app/account', $message->user->id) }}">
+                    <img src="{{ url('/images/avatars', $message->user->avatar) }}" class="img-circle" alt="{{ $message->user->name }}">
+                </a>
+            </div>
+        </li>
     @endif
-</div>

@@ -93,7 +93,6 @@
                 </li>
             </ul>
 
-            <p class="navbar-text"><span class="label bg-success-400">Online</span></p>
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown language-switch">
@@ -157,8 +156,8 @@
 
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a href="{{ url('/') }}/app/account"><i class="icon-user-plus"></i> პირადი გვერდი</a></li>
-                        <li><a href="#"><i class="icon-coins"></i> My balance</a></li>
-                        <li><a href="#"><span class="badge bg-teal-400 pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
+                        <li><a href="#"><i class="icon-coins"></i> ბალანსი</a></li>
+                        <li><a href="{{ url('/app/messages') }}"><span class="badge bg-teal-400 pull-right">@include('admin.messenger.unread-count')</span> <i class="icon-comment-discussion"></i> შეტყობინებები</a></li>
                         <li class="divider"></li>
                         <li><a href="{{ route('settings') }}"><i class="icon-cog5"></i> პარამეტრები</a></li>
                         <li><a href="{{ url('/') }}" target="_blank"><i class="icon-presentation"></i> ვებგვერდის ნახვა</a></li>

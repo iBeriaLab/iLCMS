@@ -159,4 +159,14 @@ class MessagesController extends Controller
 
         return redirect('app/messages/' . $id);
     }
+
+    public function destroy($id) {
+        $thread_id = Thread::findOrFail($id);
+        $messages = Message::findOrFail($thread_id);
+
+        $messages->delete();
+
+        return redirect()->back()->with('success','Messages successfully deleted');
+
+    }
 }
